@@ -65,7 +65,11 @@ public class SunCalc {
 		h += Constants.RAD() * 0.017 / tan(h + Constants.RAD() * 10.26 / (h + Constants.RAD() * 5.10))
 
 		let azimuth = PositionUtils.getAzimuth(h: H, phi: phi, dec: c.declination)
-		return MoonPosition(azimuth: azimuth, altitude: h, distance: c.distance)
+        
+        // formula 14.1 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+        let pa = atan(sin(H) / (tan(phi) * cos(c.declination) - sin(c.declination) * cos(H)))
+        
+        return MoonPosition(azimuth: azimuth, altitude: h, distance: c.distance, parallacticAngle: pa)
 	}
 
 	public class func getMoonIllumination(timeAndDate: Date) -> MoonIllumination {

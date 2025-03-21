@@ -74,6 +74,7 @@ final class SunCalcTests: XCTestCase {
         XCTAssertEqual(moonPos.azimuth, -0.9783999522438226, accuracy: NEARNESS)
         XCTAssertEqual(moonPos.altitude, 0.006969727754891917, accuracy: NEARNESS)
         XCTAssertEqual(moonPos.distance, 364121.37256256294, accuracy: NEARNESS)
+        XCTAssertEqual(moonPos.parallacticAngle, 364121.37256256294, accuracy: NEARNESS)
 	}
 
 	func test_getMoonIllumination() {
