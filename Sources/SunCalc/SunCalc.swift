@@ -67,7 +67,7 @@ public class SunCalc {
 		let azimuth = PositionUtils.getAzimuth(h: H, phi: phi, dec: c.declination)
         
         // formula 14.1 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
-        let pa = atan(sin(H) / (tan(phi) * cos(c.declination) - sin(c.declination) * cos(H)))
+        let pa = atan2(sin(H), (tan(phi) * cos(c.declination) - sin(c.declination) * cos(H)))
         
         return MoonPosition(azimuth: azimuth, altitude: h, distance: c.distance, parallacticAngle: pa)
 	}
